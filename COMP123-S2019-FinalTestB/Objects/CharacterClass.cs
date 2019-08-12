@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 /*
  * STUDENT NAME:
  * STUDENT ID:
@@ -13,10 +12,19 @@ using System.Threading.Tasks;
 
 namespace COMP123_S2019_FinalTestB.Objects
 {
-   public class Item
+   public enum CharacterClass
     {
-        public string Description { get; set; }
-        public float Weight { get; set; }
-        public int Cost { get; set; }
+        FIGHTER,
+        ROUGE,
+        WIZARD,
+        CLERIC,
+        RANGER,
+        MONK,
+        BARBARIAN,
+        PALADIN,
+        BARD,
+        WARLOCK,
+        SORCEROR,
+        DRUID
     }
 }
