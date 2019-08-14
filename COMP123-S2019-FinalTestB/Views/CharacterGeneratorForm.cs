@@ -21,6 +21,13 @@ namespace COMP123_S2019_FinalTestB.Views
         public CharacterGeneratorForm()
         {
             InitializeComponent();
+            if(MainTabControl.SelectedIndex == 3)
+            {
+                HeroNameDataLabel.Text =
+                GeneratedNameDataLabel.Text=
+                AbilitiesDataLabel.Text=
+                InventoryItemsDataLabel.Text=
+            }
         }
         /// <summary>
         /// This is the event handler for the BackButton click event
@@ -46,32 +53,43 @@ namespace COMP123_S2019_FinalTestB.Views
                 MainTabControl.SelectedIndex++;
             }
         }
-
+        /// <summary>
+        /// Creating Firstname and Lastname lists 
+        /// </summary>
        public List<string> FirstNameList = new List<string>();
        public List<string> LastNameList = new List<string>();
-        public void LoadNames()
+        public void loadnames()
         {
-            using (var sr = new StreamReader("firstNames.txt"))
-            {
-                while (sr.Peek() >= 0)
-                    FirstNameList.Add(sr.ReadLine());
-            }
-            using (var sr = new StreamReader("lastNames.txt"))
-            {
-                while (sr.Peek() >= 0)
-                    LastNameList.Add(sr.ReadLine());
-            }
+            //Inputing First Name
+            var firstName = File.ReadAllLines("../../Data/firstNames.txt");
+            var firstNameList = new List<string>(firstName);
+
+            //Inputing Last Name
+            var lastName = File.ReadAllLines("../../Data/lastNames.txt");
+            var lastNameList = new List<string>(lastName);
         }
         public void GenerateNames()
         {
-            Random first = new Random();
-            Random last = new Random();
-            foreach(string f in FirstNameList)
-            {
-                first = 
-            }
-        }
+            //Inputing First Name
+            var firstName = File.ReadAllLines("../../Data/firstNames.txt");
+            var firstNameList = new List<string>(firstName);
+            Random rand = new Random();
+            int index = rand.Next(firstNameList.Count);
+            FirstNameDataLabel.Text = firstNameList[index];
 
+            //Inputing Last Name
+            var lastName = File.ReadAllLines("../../Data/lastNames.txt");
+            var lastNameList = new List<string>(lastName);
+            Random random = new Random();
+            int indexs = random.Next(lastNameList.Count);
+            LastNameDataLabel.Text = lastNameList[indexs];
+            CharacterNameTextBox.Text = firstNameList[index] + " " + lastNameList[indexs];
+        }
+        /// <summary>
+        /// EXit toolstrip code to exit the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -79,11 +97,11 @@ namespace COMP123_S2019_FinalTestB.Views
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (StreamReader inputStream = new StreamReader(File.Load("Abc.txt", FileMode.Open)))
+            using (StreamReader inputStream = new StreamReader(File.Open("Abc.txt", FileMode.Open)))
             {
                 //inputStream.ReadLine();
-                inputString.Close();
-                inputString.Dispose();
+                inputStream.Close();
+                inputStream.Dispose();
             }
 
         }
@@ -97,5 +115,56 @@ namespace COMP123_S2019_FinalTestB.Views
                 outputString.Dispose();
             }
         }
+
+        private void GenerateAbilitiesButton_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            int strength = rnd.Next(3,18);
+            int dexterity = rnd.Next(3, 18);
+            int constitution = rnd.Next(3, 18);
+            int intelligence = rnd.Next(3, 18);
+            int wisdom = rnd.Next(3, 18);
+            int charisma = rnd.Next(3, 18);
+            StrengthDataLabel.Text = strength.ToString();
+            DexterityDataLabel.Text = dexterity.ToString();
+            CostitutionDataLabel.Text = constitution.ToString();
+            IntelligenceDataLabel.Text = intelligence.ToString();
+            WisdomDataLabel.Text = wisdom.ToString();
+            CharismaDataLabel.Text = charisma.ToString();
+            
+        }
+        public List<string> InventoryList = new List<string>();
+        public void LoadInventory()
+        {
+            var inventory = File.ReadAllLines("../../Data/inventory.txt");
+
+            var InventoryList = new List<string>(inventory);
+        }
+
+        private void CharacterGeneratorForm_Load(object sender, EventArgs e)
+        {
+            LoadInventory();
+        }
+        public void GenerateRandomInventory()
+        {
+            Random InvRnd1 = new Random();
+            int inx1 = InvRnd1.Next(5,20); 
+            InventoryLabel1.Text = InventoryList[2];
+            
+        }
+
+        private void GenerateNameButton_Click(object sender, EventArgs e)
+        {
+            GenerateNames();
+            
+        }
+
+        private void GenerateInventoryButton_Click(object sender, EventArgs e)
+        {
+            GenerateRandomInventory();
+        }
+
+        
+
     }
 }

@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("COMP123-S2019-FinalTestB")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("This project is to be used for character generation.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Centennial College")]
 [assembly: AssemblyProduct("COMP123-S2019-FinalTestB")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
