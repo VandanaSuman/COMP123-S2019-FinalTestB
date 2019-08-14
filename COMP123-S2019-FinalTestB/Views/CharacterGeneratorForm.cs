@@ -23,7 +23,7 @@ namespace COMP123_S2019_FinalTestB.Views
             InitializeComponent();
             if(MainTabControl.SelectedIndex == 3)
             {
-                HeroNameDataLabel.Text =
+                HeroNameDataLabel.Text = 
                 GeneratedNameDataLabel.Text=
                 AbilitiesDataLabel.Text=
                 InventoryItemsDataLabel.Text=
@@ -151,12 +151,22 @@ namespace COMP123_S2019_FinalTestB.Views
         {
             LoadInventory();
         }
+        //
         public void GenerateRandomInventory()
         {
             Random InvRnd1 = new Random();
             int inx1 = InvRnd1.Next(5,20); 
-            InventoryLabel1.Text = InventoryList[2];
-            
+            InventoryLabel1.Text = InventoryList[inx1];
+            Random InvRnd2 = new Random();
+            int inx2 = InvRnd1.Next(5, 20);
+            InventoryLabel1.Text = InventoryList[inx2];
+            Random InvRnd3 = new Random();
+            int inx3 = InvRnd1.Next(5, 20);
+            InventoryLabel1.Text = InventoryList[inx3];
+            Random InvRnd4 = new Random();
+            int inx4 = InvRnd1.Next(5, 20);
+            InventoryLabel1.Text = InventoryList[inx4];
+
         }
 
         private void GenerateNameButton_Click(object sender, EventArgs e)
