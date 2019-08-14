@@ -94,28 +94,33 @@ namespace COMP123_S2019_FinalTestB.Views
         {
             Application.Exit();
         }
+        //Save File
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Title = "Save File";
+            saveFileDialog1.ShowDialog();
+            using (StreamWriter outputString = new StreamWriter(File.Open("Abc.txt", FileMode.Create)))
+            {
+                outputString.WriteLine(Program.character);
+                outputString.Close();
+                outputString.Dispose();
+            }
 
+        }
+        //open File
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using (StreamReader inputStream = new StreamReader(File.Open("Abc.txt", FileMode.Open)))
             {
-                //inputStream.ReadLine();
+                inputStream.ReadLine();
                 inputStream.Close();
                 inputStream.Dispose();
             }
 
         }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (StreamWriter outputString = new StreamWriter(File.Open("Abc.txt", FileMode.Create)))
-            {
-                outputString.WriteLine();
-                outputString.Close();
-                outputString.Dispose();
-            }
-        }
-
+       
+        //Generate Abilities button click event
         private void GenerateAbilitiesButton_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -133,6 +138,7 @@ namespace COMP123_S2019_FinalTestB.Views
             CharismaDataLabel.Text = charisma.ToString();
             
         }
+        //creating Inventory List
         public List<string> InventoryList = new List<string>();
         public void LoadInventory()
         {
@@ -140,7 +146,7 @@ namespace COMP123_S2019_FinalTestB.Views
 
             var InventoryList = new List<string>(inventory);
         }
-
+        //CharacterGenertaorFormLoadEvent
         private void CharacterGeneratorForm_Load(object sender, EventArgs e)
         {
             LoadInventory();

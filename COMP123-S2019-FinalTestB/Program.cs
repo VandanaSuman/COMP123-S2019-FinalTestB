@@ -29,5 +29,9 @@ namespace COMP123_S2019_FinalTestB
             characterForm = new CharacterGeneratorForm();
             Application.Run(characterForm);
         }
+        public class character
+        {
+            string generatedName = CharacterNameTextBox.Text;
+        }
     }
 }

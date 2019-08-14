@@ -16,16 +16,7 @@ namespace COMP123_S2019_FinalTestB.Objects
      public class Character
     {
         //Character Abilities
-        public string FirstName
-        { get
-            {
-                return FirstNameDataLabel.Text;
-            }
-            set
-            {
-                FirstNameDataLabel.Text = value;
-            }
-                }
+        public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Strength { get; set; }
         public string Dexterity { get; set; }
@@ -45,7 +36,7 @@ namespace COMP123_S2019_FinalTestB.Objects
 
         //Equipment
         public List<Item> Inventory;
-
+         
 
         //Constructor 
         public Character()
